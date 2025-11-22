@@ -7,6 +7,7 @@
   <!-- Google Fonts for a professional font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
+    /* Make body a flex container for layout */
     body {
       margin: 0;
       font-family: 'Roboto', Arial, sans-serif;
@@ -15,7 +16,7 @@
       background-color: #f0f2f5;
     }
 
-    /* Page title at the top, centered */
+    /* Header fixed at top */
     .page-title {
       position: fixed;
       top: 10px;
@@ -26,53 +27,48 @@
       z-index: 999;
     }
 
-    /* Left Sidebar - scrollable, moved down slightly for spacing */
+    /* Sidebar styles - both now flex items with equal height and same title size */
+    .sidebar-left, .sidebar-right {
+      height: calc(100vh - 20px); /* full height minus some margin for top */
+      padding-top: 50px; /* space below fixed header */
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    /* Sidebars fixed width and styling */
     .sidebar-left {
       width: 250px;
       background-color: #fff;
       padding: 10px 20px;
       box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 70px; /* moved down for spacing */
-      bottom: 0;
-      overflow-y: auto;
-      max-height: calc(100vh - 70px);
-    }
-    /* Small font for song titles */
-    .sidebar-left .song-title {
-      font-size: 0.75em;
-      margin: 8px 0 4px 0;
-    }
-    /* Small controls for audio */
-    .sidebar-left audio {
-      width: 150px;
-      height: 24px;
-      display: inline-block;
-      vertical-align: middle;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Right Sidebar for images */
     .sidebar-right {
       width: 250px;
       background-color: #fff;
       padding: 20px;
       box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      position: fixed;
-      right: 0;
-      top: 50px; /* below title bar */
-      bottom: 0;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Main content area */
-    .main {
-      margin-left: 250px;
-      margin-right: 250px;
-      padding: 20px;
-      margin-top: 80px; /* increased to give space for the fixed header */
-      flex: 1;
+    /* Title styles for both panels - same size */
+    .panel-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      text-align: center;
     }
-    /* Centered video box */
+
+    /* Main content fills remaining space */
+    .main {
+      flex: 1;
+      padding: 20px;
+      margin-top: 50px; /* space below header */
+    }
+
+    /* Centered video container styles */
     .content-box {
       background-color: #fff;
       border-radius: 12px;
@@ -82,19 +78,28 @@
       flex-direction: column;
       align-items: center;
     }
-    /* Centered title inside content box */
-    .content-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
+
+    /* Styles for media list in left sidebar */
+    .sidebar-left .song-item {
+      margin-bottom: 10px;
+    }
+    .sidebar-left .song-title {
+      font-size: 0.75em;
+      margin: 8px 0 4px 0;
+    }
+    .sidebar-left audio {
+      width: 150px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    /* AI images container styles */
+    /* Styles for AI images in right sidebar */
     .images-container {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
     .ai-image {
       width: 80px;
       height: 80px;
@@ -106,13 +111,12 @@
   </style>
 </head>
 <body>
-  <!-- Top Page Title -->
+  <!-- Top header -->
   <div class="page-title">AI Evolutions HQ</div>
 
-  <!-- Left Sidebar with media players -->
+  <!-- Left Sidebar -->
   <div class="sidebar-left">
-    <div style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Media Files</div>
-    <!-- List of 6 small media players -->
+    <div class="panel-title">Media Files</div>
     <div class="song-item">
       <div class="song-title">More than a Silhouette - Brian Smith</div>
       <audio controls>
@@ -126,32 +130,32 @@
       </audio>
     </div>
     <div class="song-item">
-      <div class="song-title">Brian Smith - Walking on Air [original]</div>
+      <div class="song-title">Song Title 3</div>
       <audio controls>
-        <source src="Brian Smith - Walking on Air [original].mp3" type="audio/mpeg" />
+        <source src="song3.mp3" type="audio/mpeg" />
       </audio>
     </div>
     <div class="song-item">
-      <div class="song-title">Brian Smith - The Rain Still Falls</div>
+      <div class="song-title">Song Title 4</div>
       <audio controls>
-        <source src="Brian Smith - The Rain Still Falls.mp3" type="audio/mpeg" />
+        <source src="song4.mp3" type="audio/mpeg" />
       </audio>
     </div>
     <div class="song-item">
-      <div class="song-title">Brian Smith - Letting-Go</div>
+      <div class="song-title">Song Title 5</div>
       <audio controls>
-        <source src="Brian Smith - Letting-Go.mp3" type="audio/mpeg" />
+        <source src="song5.mp3" type="audio/mpeg" />
       </audio>
     </div>
     <div class="song-item">
-      <div class="song-title">Brian Smith - Leave You Bleeding</div>
+      <div class="song-title">Song Title 6</div>
       <audio controls>
-        <source src="Brian Smith - Leave You Bleeding.mp3" type="audio/mpeg" />
+        <source src="song6.mp3" type="audio/mpeg" />
       </audio>
     </div>
   </div>
 
-  <!-- Main Content with centered video -->
+  <!-- Main Content -->
   <div class="main">
     <div class="content-box">
       <h2 style="margin-bottom: 20px;">Air.Kelly Video</h2>
@@ -161,9 +165,9 @@
     </div>
   </div>
 
-  <!-- Right Sidebar with images -->
+  <!-- Right Sidebar -->
   <div class="sidebar-right">
-    <h1>AI Images</h1>
+    <div class="panel-title">AI Images</div>
     <div class="images-container">
       <a href="ComfyUI_00036_.png" target="_blank">
         <img src="ComfyUI_00036_.png" alt="AI Image 1" class="ai-image" />
