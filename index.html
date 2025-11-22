@@ -3,21 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Media Player</title>
+  <title>Modern Media Box</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .video-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .media-box {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .video-box {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    /* Style for buttons */
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <h1>Media Files</h1>
+  <h1>Media Player with Multiple Videos</h1>
+  <div class="video-container">
+    <div class="media-box">
+      <div class="buttons">
+        <button onclick="showVideos(1)">Show 1 Video</button>
+        <button onclick="showVideos(2)">Show 2 Videos</button>
+        <button onclick="showVideos(3)">Show 3 Videos</button>
+      </div>
 
-  <h2>Brian Smith - More than a Silhouette</h2>
-  <audio controls>
-    <source src="More Than a Silhouette.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
+      <!-- Main Video -->
+      <div class="video-box" id="video1">
+        <h2>Main Video</h2>
+        <video width="100%" controls>
+          <source src="video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-  <h2>AIR.Kelly/h2>
-  <video width="640" height="360" controls>
-    <source src="kelly.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+      <!-- Additional Videos -->
+      <div class="video-box" id="video2" style="display: none;">
+        <h2>Video 2</h2>
+        <video width="100%" controls>
+          <source src="video2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="video-box" id="video3" style="display: none;">
+        <h2>Video 3</h2>
+        <video width="100%" controls>
+          <source src="video3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showVideos(count) {
+      // Hide all videos first
+      document.getElementById('video2').style.display = 'none';
+      document.getElementById('video3').style.display = 'none';
+
+      if (count >= 1) {
+        document.getElementById('video2').style.display = 'block';
+      }
+      if (count === 3) {
+        document.getElementById('video3').style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>
