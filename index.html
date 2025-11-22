@@ -26,17 +26,17 @@
       z-index: 999;
     }
 
-    /* Left Sidebar - scrollable, compact style */
+    /* Left Sidebar - scrollable, moved down slightly for spacing */
     .sidebar-left {
       width: 250px;
       background-color: #fff;
       padding: 10px 20px;
       box-shadow: 2px 0 8px rgba(0,0,0,0.1);
       position: fixed;
-      top: 50px; /* below the title */
+      top: 70px; /* moved down from 50px to give space */
       bottom: 0;
       overflow-y: auto;
-      max-height: calc(100vh - 50px);
+      max-height: calc(100vh - 70px);
     }
 
     /* Style for song titles to be small */
@@ -61,7 +61,7 @@
       box-shadow: -2px 0 8px rgba(0,0,0,0.1);
       position: fixed;
       right: 0;
-      top: 50px; /* below the title */
+      top: 50px; /* below the title bar */
       bottom: 0;
       overflow-y: auto;
     }
@@ -117,7 +117,7 @@
   <!-- Page Title -->
   <div class="page-title">AI Evolutions HQ</div>
 
-  <!-- Left Sidebar with compact media players -->
+  <!-- Left Sidebar with compact media players, moved down slightly -->
   <div class="sidebar-left">
     <div style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Media Files</div>
     <!-- List of 6 songs with small players -->
