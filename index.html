@@ -1,154 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Evolutions HQ</title>
-  <!-- Link to Google Fonts for Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #f0f2f5;
-    }
+<style>
+  /* existing styles ... */
+  /* Smaller font for song titles */
+  .sidebar-left h2 {
+    font-size: 0.9em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+</style>
 
-    /* Centered page title at the top */
-    .page-title {
-      position: fixed;
-      top: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 2em;
-      font-weight: bold;
-      z-index: 999;
-    }
-
-    /* Left Sidebar */
-    .sidebar-left {
-      width: 250px;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 50px; /* leave space for page title */
-      bottom: 0;
-      overflow-y: auto;
-    }
-
-    /* Right Sidebar */
-    .sidebar-right {
-      width: 250px;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      position: fixed;
-      right: 0;
-      top: 50px; /* leave space for page title */
-      bottom: 0;
-      overflow-y: auto;
-    }
-
-    /* Main content area */
-    .main {
-      margin-left: 250px;
-      margin-right: 250px;
-      padding: 20px;
-      margin-top: 60px; /* space below page title */
-      flex: 1;
-    }
-
-    /* Headings styles */
-    h1 {
-      font-size: 1.5em;
-      margin-top: 0;
-    }
-
-    /* Content box style for main area */
-    .content-box {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: center; /* center horizontally */
-      align-items: center; /* center vertically if needed */
-      flex-direction: column; /* stack title and video */
-    }
-
-    /* Style for the page title */
-    .page-title {
-      padding: 10px 0;
-      background-color: #fff;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* Style for the images container in right sidebar */
-    .images-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Style for small images in AI Images sidebar */
-    .ai-image {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      cursor: pointer; /* Pointer cursor on hover */
-    }
-  </style>
-</head>
-<body>
-  <!-- Page Title -->
-  <div class="page-title">AI Evolutions HQ</div>
-
-  <!-- Left Sidebar -->
-  <div class="sidebar-left">
-    <h1>Media Files</h1>
-    <h2>More than a Silhouette by Brian Smith</h2>
-    <audio controls>
-      <source src="More Than a Silhouette.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-    <h2>New Beginnings by Brian Smith</h2>
-    <audio controls>
-      <source src="new_beginning.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main">
-    <div class="content-box">
-      <h2 style="text-align: center; margin-bottom: 20px;">AIR.Kelly Video</h2>
-      <video width="100%" height="360" controls>
-        <source src="kelly.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-
-  <!-- Right Sidebar for AI Images -->
-  <div class="sidebar-right">
-    <h1>AI Images</h1>
-    <div class="images-container">
-      <a href="ComfyUI_00036_.png" target="_blank">
-        <img src="ComfyUI_00036_.png" alt="AI Image 1" class="ai-image" />
-      </a>
-      <a href="ComfyUI_00024_.png" target="_blank">
-        <img src="ComfyUI_00024_.png" alt="AI Image 2" class="ai-image" />
-      </a>
-      <a href="ComfyUI_00088_.png" target="_blank">
-        <img src="ComfyUI_00088_.png" alt="AI Image 3" class="ai-image" />
-      </a>
-    </div>
-  </div>
-</body>
-</html>
+<!-- Left Sidebar -->
+<div class="sidebar-left">
+  <h1>Media Files</h1>
+  <h2>More than a Silhouette by Brian Smith</h2>
+  <audio controls>
+    <source src="More Than a Silhouette.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  
+  <h2>New Beginnings by Brian Smith</h2>
+  <audio controls>
+    <source src="new_beginning.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  
+  <!-- Additional songs -->
+  <h2>Brian Smith - Leave You Bleeding</h2>
+  <audio controls>
+    <source src="Brian Smith - Leave You Bleeding.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  
+  <h2>Song Title 4</h2>
+  <audio controls>
+    <source src="Brian Smith - Letting-Go.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  
+  <h2>Song Title 5</h2>
+  <audio controls>
+    <source src="Brian Smith - The Rain Still Falls.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+</div>
