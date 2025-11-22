@@ -7,7 +7,7 @@
   <!-- Google Fonts for a professional font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    /* Make body a flex container for layout */
+    /* Use flex layout for the entire page */
     body {
       margin: 0;
       font-family: 'Roboto', Arial, sans-serif;
@@ -16,7 +16,7 @@
       background-color: #f0f2f5;
     }
 
-    /* Header fixed at top */
+    /* Fixed header at the top */
     .page-title {
       position: fixed;
       top: 10px;
@@ -27,15 +27,15 @@
       z-index: 999;
     }
 
-    /* Sidebar styles - both now flex items with equal height and same title size */
+    /* Sidebar styles: same height, same title size, side by side */
     .sidebar-left, .sidebar-right {
-      height: calc(100vh - 20px); /* full height minus some margin for top */
-      padding-top: 50px; /* space below fixed header */
+      height: calc(100vh - 20px);
+      padding-top: 50px; /* to stay below fixed header */
       box-sizing: border-box;
       overflow-y: auto;
     }
 
-    /* Sidebars fixed width and styling */
+    /* Width for sidebars */
     .sidebar-left {
       width: 250px;
       background-color: #fff;
@@ -54,7 +54,7 @@
       flex-direction: column;
     }
 
-    /* Title styles for both panels - same size */
+    /* Titles for both sidebars (same size) */
     .panel-title {
       font-size: 1.2em;
       margin-bottom: 10px;
@@ -79,14 +79,15 @@
       align-items: center;
     }
 
-    /* Styles for media list in left sidebar */
-    .sidebar-left .song-item {
+    /* Style for song items in left sidebar */
+    .song-item {
       margin-bottom: 10px;
     }
-    .sidebar-left .song-title {
+    .song-title {
       font-size: 0.75em;
       margin: 8px 0 4px 0;
     }
+    /* Small audio controls */
     .sidebar-left audio {
       width: 150px;
       height: 24px;
@@ -94,7 +95,7 @@
       vertical-align: middle;
     }
 
-    /* Styles for AI images in right sidebar */
+    /* Style for AI images in right sidebar */
     .images-container {
       display: flex;
       flex-direction: column;
@@ -114,7 +115,7 @@
   <!-- Top header -->
   <div class="page-title">AI Evolutions HQ</div>
 
-  <!-- Left Sidebar -->
+  <!-- Left Sidebar with your song info -->
   <div class="sidebar-left">
     <div class="panel-title">Media Files</div>
     <div class="song-item">
@@ -155,7 +156,7 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main content with centered video -->
   <div class="main">
     <div class="content-box">
       <h2 style="margin-bottom: 20px;">Air.Kelly Video</h2>
@@ -165,7 +166,7 @@
     </div>
   </div>
 
-  <!-- Right Sidebar -->
+  <!-- Right Sidebar with images -->
   <div class="sidebar-right">
     <div class="panel-title">AI Images</div>
     <div class="images-container">
