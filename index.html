@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Media Sidebar</title>
+  <title>Media Page with Sidebars</title>
   <style>
     body {
       margin: 0;
@@ -13,8 +13,8 @@
       background-color: #f0f2f5;
     }
 
-    /* Sidebar styles */
-    .sidebar {
+    /* Left Sidebar */
+    .sidebar-left {
       width: 250px;
       background-color: #fff;
       padding: 20px;
@@ -24,20 +24,33 @@
       overflow-y: auto;
     }
 
-    /* Main content styles */
+    /* Right Sidebar */
+    .sidebar-right {
+      width: 250px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+      position: fixed;
+      right: 0;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    /* Main content area */
     .main {
       margin-left: 250px;
+      margin-right: 250px;
       padding: 20px;
       flex: 1;
     }
 
-    /* Sidebar heading styles */
-    .sidebar h1 {
+    /* Headings styles */
+    h1 {
       font-size: 1.5em;
       margin-top: 0;
     }
 
-    /* Card style for content (optional) */
+    /* Content box style for main area */
     .content-box {
       background-color: #fff;
       border-radius: 12px;
@@ -45,16 +58,26 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* Style for audio controls */
-    audio {
-      width: 100%;
-      margin-top: 10px;
+    /* Style for the images container in right sidebar */
+    .images-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Style for small images in AI Images sidebar */
+    .ai-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
+  <!-- Left Sidebar -->
+  <div class="sidebar-left">
     <h1>Media Files</h1>
     <h2>More than a Silhouette - Brian Smith</h2>
     <audio controls>
@@ -63,14 +86,24 @@
     </audio>
   </div>
 
-  <!-- Main content area -->
+  <!-- Main Content -->
   <div class="main">
     <div class="content-box">
       <h2>Air.Kelly Video</h2>
-      <video width="640" height="360" controls>
+      <video width="100%" height="360" controls>
         <source src="kelly.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+    </div>
+  </div>
+
+  <!-- Right Sidebar for AI Images -->
+  <div class="sidebar-right">
+    <h1>AI Images</h1>
+    <div class="images-container">
+      <img src="placeholder1.png" alt="AI Image 1" class="ai-image" />
+      <img src="placeholder2.png" alt="AI Image 2" class="ai-image" />
+      <img src="placeholder3.png" alt="AI Image 3" class="ai-image" />
     </div>
   </div>
 </body>
