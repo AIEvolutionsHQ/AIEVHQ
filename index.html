@@ -103,35 +103,26 @@ section h2 {
   transform: translateY(-5px);
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
+.about-us {
+  max-width: 800px;
   margin: auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+.contact-info {
+  max-width: 800px;
+  margin: auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
-.contact-form button {
-  padding: 12px;
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.contact-info a {
+  color: #0d6efd;
 }
 
-.contact-form button:hover {
-  background-color: #0056b3;
+.contact-info a:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
@@ -155,8 +146,7 @@ footer {
     <h1>AI Evolutions HQ</h1>
     <nav>
       <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">About Us</a>
     </nav>
   </div>
 </header>
@@ -185,23 +175,27 @@ footer {
   </div>
 </section>
 
-<!-- About Section -->
+<!-- About Us Section with Bio -->
 <section id="about">
   <h2>About Us</h2>
-  <p style="max-width:800px; margin:auto; text-align:center;">
-    AI Evolutions HQ is your trusted partner in computer technology solutions. We specialize in custom builds, installations, support, and comprehensive training to help you harness the power of modern computing.
-  </p>
+  <div class="about-us">
+    <p>
+      <strong>Brian Rydell Smith</strong><br><br>
+      With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
+      With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you're looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
+      Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he's not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
+    </p>
+  </div>
 </section>
 
-<!-- Contact Section (Updated) -->
-<section id="contact">
+<!-- Contact Section with Your Details -->
+<section id="contact" class="contact-info">
   <h2>Contact Us</h2>
-  <p style="max-width:800px; margin:auto; text-align:center;">
+  <p>
     <strong>Brian Rydell Smith</strong><br>
     9044 South Marshfield Avenue, Chicago, Illinois 60620<br>
     Phone: (312) 287-6652<br>
     Email: <a href="mailto:aievolutionshq@gmail.com">aievolutionshq@gmail.com</a><br><br>
-    
     <strong>Connect with me:</strong><br>
     <a href="https://www.linkedin.com/in/brian-smith-3129ab3/" target="_blank">LinkedIn</a><br>
     <a href="https://www.youtube.com/@AIEvolutionsHQ" target="_blank">YouTube</a><br>
