@@ -47,6 +47,7 @@
     nav a {
       margin-left: 20px;
       font-weight: bold;
+      cursor: pointer;
     }
 
     /* Hero section */
@@ -71,9 +72,14 @@
 
     /* Sections */
 section {
+  display: none; /* Hidden by default */
   padding: 60px 20px;
   max-width: 1200px;
   margin: auto;
+}
+
+section.active {
+  display: block; /* Show when active */
 }
 
 section h2 {
@@ -145,18 +151,35 @@ footer {
   <div class="container">
     <h1>AI Evolutions HQ</h1>
     <nav>
-      <a href="#services">Services</a>
-      <a href="#about">About Us</a>
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('about')">About Us</a>
+      <a onclick="showSection('services')">Our Services</a>
+      <a onclick="showSection('contact')">Contact Us</a>
     </nav>
   </div>
 </header>
 
-<!-- Hero Section -->
-<div class="hero">
-  <h2>Empowering Your Tech Journey</h2>
-</div>
+<!-- Landing / Home Section -->
+<section id="home" class="active">
+  <div class="hero">
+    <h2>Empowering Your Tech Journey</h2>
+  </div>
+</section>
 
-<!-- Services Section -->
+<!-- About Us Section -->
+<section id="about">
+  <h2>About Us</h2>
+  <div class="about-us">
+    <p>
+      <strong>Brian Rydell Smith</strong><br><br>
+      With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
+      With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you're looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
+      Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he's not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
+    </p>
+  </div>
+</section>
+
+<!-- Our Services Section -->
 <section id="services">
   <h2>Our Services</h2>
   <div class="services">
@@ -175,20 +198,7 @@ footer {
   </div>
 </section>
 
-<!-- About Us Section with Bio -->
-<section id="about">
-  <h2>About Us</h2>
-  <div class="about-us">
-    <p>
-      <strong>Brian Rydell Smith</strong><br><br>
-      With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
-      With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you're looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
-      Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he's not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
-    </p>
-  </div>
-</section>
-
-<!-- Contact Section with Your Details -->
+<!-- Contact Us Section -->
 <section id="contact" class="contact-info">
   <h2>Contact Us</h2>
   <p>
@@ -212,6 +222,16 @@ footer {
     <a href="#" style="color:#fff; text-decoration:underline;">Privacy Policy</a>
   </p>
 </footer>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
