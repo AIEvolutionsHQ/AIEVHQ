@@ -1,101 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Evolutions HQ | Computer Solutions</title>
-  <style>
-    /* Reset & Base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header styles */
-    header {
-      background-color: #0d6efd;
-      color: #fff;
-      padding: 20px 0;
-    }
-
-    header .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 2rem;
-    }
-
-    nav a {
-      margin-left: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Hero section */
-    .hero {
-      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
-
-    /* Sections */
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Evolutions HQ | Computer Solutions</title>
+<style>
+  /* Reset & Base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Header styles */
+  header {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 20px 0;
+  }
+  header .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  nav a {
+    margin-left: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  /* Hero section */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  /* Sections */
 section {
-  display: none; /* Hidden by default */
+  display: none;
   padding: 60px 20px;
   max-width: 1200px;
   margin: auto;
 }
-
 section.active {
-  display: block; /* Show when active */
+  display: block;
 }
-
 section h2 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 2rem;
   color: #0d6efd;
 }
-
+/* Services */
 .services {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
-
 .service-card {
   background-color: #fff;
   border-radius: 8px;
@@ -104,33 +92,22 @@ section h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
-
 .service-card:hover {
   transform: translateY(-5px);
 }
-
-.about-us {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
+/* Contact */
 .contact-info {
   max-width: 800px;
   margin: auto;
   padding: 0 20px;
   text-align: center;
 }
-
 .contact-info a {
   color: #0d6efd;
 }
-
 .contact-info a:hover {
   text-decoration: underline;
 }
-
 /* Footer */
 footer {
   background-color: #222;
@@ -138,20 +115,82 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
-
-/* Utility classes */
+/* Utility for center text */
 .text-center {
   text-align: center;
 }
-
-/* Style for the music controls container */
-#music-controls {
+/* Music collection list styling */
+#music-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+#music-collection audio {
+  width: 100%;
+}
+/* Button to open modal */
+#select-song-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#select-song-btn:hover {
+  background-color: #095bb5;
+}
+/* Modal styling */
+#songModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+#songModal.show {
+  display: flex;
+}
+#modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  width: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+#modalContent h4 {
+  margin-bottom: 15px;
   text-align: center;
-  margin: 20px 0;
+}
+#songList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.song-item {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.song-item:hover {
+  background-color: #ddd;
 }
 
-/* Custom Music Player Styles */
-.custom-player {
+/* Custom Player Styles */
+#custom-player {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,10 +201,9 @@ footer {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-wrap: wrap; /* for responsiveness */
+  flex-wrap: wrap;
 }
-
-.custom-player button {
+#custom-player button {
   background-color: #0d6efd;
   color: #fff;
   border: none;
@@ -175,12 +213,10 @@ footer {
   font-size: 1rem;
   transition: background-color 0.3s;
 }
-
-.custom-player button:hover {
+#custom-player button:hover {
   background-color: #095bb5;
 }
-
-.seek-bar {
+#seekBar {
   flex: 1;
   min-width: 150px;
   height: 5px;
@@ -203,23 +239,20 @@ footer {
 </header>
 
 <!-- Background music controls -->
-<div id="music-controls">
+<div id="music-controls" style="text-align:center; margin:20px;">
   <button onclick="toggleMute()" style="padding:8px 12px; font-size:1rem;">Unmute Music</button>
 </div>
 <!-- Hidden background music that autoplays and loops -->
 <audio autoplay loop muted id="backgroundMusic" style="display:none;">
   <source src="your-background-music.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
 </audio>
 
-<!-- Landing / Home Section -->
+<!-- Main Sections -->
 <section id="home" class="active">
   <div class="hero">
     <h2>Empowering Your Tech Journey</h2>
   </div>
 </section>
-
-<!-- About Us Section -->
 <section id="about">
   <h2>About Us</h2>
   <div class="about-us">
@@ -231,8 +264,6 @@ footer {
     </p>
   </div>
 </section>
-
-<!-- Our Services Section -->
 <section id="services">
   <h2>Our Services</h2>
   <div class="services">
@@ -250,8 +281,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- Contact Us Section -->
 <section id="contact" class="contact-info">
   <h2>Contact Us</h2>
   <p>
@@ -268,41 +297,53 @@ footer {
   </p>
 </section>
 
-<!-- Music Collection Section -->
+<!-- Music Collection List -->
 <h3 style="text-align:center; margin-top:40px;">Enjoy Our Music Collection</h3>
-<div style="display:flex; flex-direction:column; gap:15px; max-width:600px; margin:auto;">
-  <audio controls style="width:100%;">
+<div id="music-collection" style="margin-bottom:40px;">
+  <audio controls>
     <source src="path/to/your-song1.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
-  <audio controls style="width:100%;">
+  <audio controls>
     <source src="path/to/your-song2.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
-  <audio controls style="width:100%;">
+  <audio controls>
     <source src="path/to/your-song3.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
-  <audio controls style="width:100%;">
+  <audio controls>
     <source src="path/to/your-song4.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
-  <audio controls style="width:100%;">
+  <audio controls>
     <source src="path/to/your-song5.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
 </div>
 
-<!-- Custom Music Player -->
-<h3 style="text-align:center; margin-top:40px;">My Music Player</h3>
-<div class="custom-player">
+<!-- Button to open song selection modal -->
+<button id="select-song-btn" onclick="openModal()">Select a Song</button>
+
+<!-- Modal for selecting songs -->
+<div id="songModal">
+  <div id="modalContent">
+    <h4>Select a Song to Play</h4>
+    <div id="songList">
+      <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">Song 1</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Song 2</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Song 3</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Song 4</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">Song 5</div>
+    </div>
+    <button style="margin-top:15px; padding:8px 12px; background:#0d6efd; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Custom Player -->
+<h3 style="text-align:center; margin-top:40px;">Now Playing</h3>
+<div id="custom-player">
   <button class="play-pause" onclick="togglePlay()">► Play</button>
-  <input type="range" class="seek-bar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
+  <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
   <button class="mute-unmute" onclick="toggleMute()">🔊 Mute</button>
 </div>
 <audio id="customAudio" style="display:none;">
   <source src="path/to/your-song1.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
 </audio>
 
 <!-- Footer -->
@@ -314,64 +355,77 @@ footer {
 </footer>
 
 <script>
-function showSection(sectionId) {
-  const sections = document.querySelectorAll('section');
-  sections.forEach(sec => {
-    sec.classList.remove('active');
+  // Show/hide section
+  function showSection(sectionId) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(sectionId).classList.add("active");
+  }
+
+  // Toggle background music mute
+  function toggleMute() {
+    const music = document.getElementById("backgroundMusic");
+    music.muted = !music.muted;
+    document.querySelector('#music-controls button').innerText = music.muted ? 'Unmute Music' : 'Mute Music';
+  }
+
+  // Modal functions
+  const modal = document.getElementById("songModal");
+  function openModal() {
+    modal.classList.add("show");
+  }
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+
+  // Play selected song from modal
+  function playSelected(path) {
+    document.getElementById("customAudio").src = path;
+    document.querySelector('.play-pause').innerText = '❚❚ Pause';
+    document.getElementById("customAudio").play();
+    closeModal();
+  }
+
+  // Custom player controls
+  const audio = document.getElementById('customAudio');
+  const playBtn = document.querySelector('.play-pause');
+  const seekBar = document.getElementById('seekBar');
+  const muteBtn = document.querySelector('.mute-unmute');
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playBtn.innerText = '❚❚ Pause';
+    } else {
+      audio.pause();
+      playBtn.innerText = '► Play';
+    }
+  }
+
+  function updateSeek() {
+    if (audio.duration) {
+      seekBar.value = (audio.currentTime / audio.duration) * 100;
+    }
+  }
+
+  function setSeek() {
+    if (audio.duration) {
+      audio.currentTime = (seekBar.value / 100) * audio.duration;
+    }
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      seekBar.value = (audio.currentTime / audio.duration) * 100;
+    }
   });
-  document.getElementById(sectionId).classList.add('active');
-}
 
-// Background music mute toggle
-function toggleMute() {
-  const music = document.getElementById('backgroundMusic');
-  music.muted = !music.muted;
-  const btn = document.querySelector('#music-controls button');
-  btn.innerText = music.muted ? 'Unmute Music' : 'Mute Music';
-}
-
-// Custom player controls
-const audio = document.getElementById('customAudio');
-const playPauseBtn = document.querySelector('.play-pause');
-const seekBar = document.querySelector('.seek-bar');
-const muteBtn = document.querySelector('.mute-unmute');
-
-// Set your song URL here
-audio.src = 'path/to/your-song1.mp3';
-
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-    playPauseBtn.innerText = '❚❚ Pause';
-  } else {
-    audio.pause();
-    playPauseBtn.innerText = '► Play';
+  function toggleMute() {
+    audio.muted = !audio.muted;
+    muteBtn.innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
   }
-}
 
-function updateSeek() {
-  const value = seekBar.value;
-  const duration = audio.duration;
-  if (duration) {
-    audio.currentTime = (value / 100) * duration;
-  }
-}
-
-function setSeek() {
-  if (audio.duration) {
-    audio.currentTime = (seekBar.value / 100) * audio.duration;
-  }
-}
-
-audio.addEventListener('timeupdate', () => {
-  const progress = (audio.currentTime / audio.duration) * 100;
-  seekBar.value = progress || 0;
-});
-
-function toggleMute() {
-  audio.muted = !audio.muted;
-  muteBtn.innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
-}
+  // Set default song
+  document.getElementById('customAudio').src = 'path/to/your-song1.mp3';
 </script>
 
 </body>
