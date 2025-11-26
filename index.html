@@ -90,12 +90,9 @@ section h2 {
   max-width: 600px;
   margin: 30px auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
 }
-
-/* Player controls inside container */
 #playerControls {
   display: flex;
   align-items: center;
@@ -104,7 +101,6 @@ section h2 {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 /* Buttons styling */
 #playerControls button {
   background-color: #fff;
@@ -120,12 +116,20 @@ section h2 {
 #playerControls button:hover {
   background: #ddd;
 }
-/* Seek slider */
 #seekBar {
   flex: 1;
   min-width: 150px;
   height: 5px;
   cursor: pointer;
+}
+
+/* Now Playing Title */
+#nowPlayingTitle {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
 /* Button to open modal */
@@ -147,7 +151,7 @@ section h2 {
 
 /* Modal styling */
 #songModal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 999;
   left: 0; top: 0;
@@ -220,10 +224,7 @@ section h2 {
 <section id="about">
   <h2>About Us</h2>
   <div class="about-us">
-    <p>
-      <strong>Brian Rydell Smith</strong><br><br>
-      (Your about text here...)
-    </p>
+    <p>(Your about text here...)</p>
   </div>
 </section>
 <section id="services">
@@ -243,11 +244,12 @@ section h2 {
     <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
     <button onclick="toggleMute()">🔊 Mute</button>
   </div>
+  <div id="nowPlayingTitle">No song selected</div>
 </div>
 
 <!-- The hidden audio element for playing songs -->
 <audio id="customAudio" style="display:none;">
-  <source src="path/to/your-song1.mp3" type="audio/mpeg" />
+  <source src="" type="audio/mpeg" />
 </audio>
 
 <!-- Button to open song list modal -->
@@ -255,16 +257,16 @@ section h2 {
   <button id="select-song-btn" onclick="openModal()">Select a Song</button>
 </div>
 
-<!-- Modal with song titles -->
+<!-- The modal with song titles -->
 <div id="songModal">
   <div id="modalContent">
     <h4 style="text-align:center;">Choose a Song</h4>
     <div id="songList" style="display:flex; flex-direction:column; gap:8px;">
-      <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">Song Title 1</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Song Title 2</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Song Title 3</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Song Title 4</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">Song Title 5</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song1.mp3', 'Song Title 1')">Song Title 1</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song2.mp3', 'Song Title 2')">Song Title 2</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song3.mp3', 'Song Title 3')">Song Title 3</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song4.mp3', 'Song Title 4')">Song Title 4</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song5.mp3', 'Song Title 5')">Song Title 5</div>
     </div>
     <div style="text-align:center; margin-top:15px;">
       <button style="padding:8px 12px; background:#0d6efd; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
@@ -272,16 +274,21 @@ section h2 {
   </div>
 </div>
 
-<!-- Your scripts -->
+<!-- Scripts -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById("songModal");
     window.openModal = () => modal.classList.add("show");
     window.closeModal = () => modal.classList.remove("show");
-    window.playSelected = (path) => {
-      document.getElementById("customAudio").src = path;
+
+    // Play selected song and update title
+    window.playSelected = (path, title) => {
+      const audio = document.getElementById("customAudio");
+      const nowPlaying = document.getElementById("nowPlayingTitle");
+      audio.src = path;
+      nowPlaying.innerText = "Now Playing: " + title;
       document.querySelector('#playerControls button').innerText = '❚❚ Pause';
-      document.getElementById("customAudio").play();
+      audio.play();
       closeModal();
     };
 
@@ -292,11 +299,11 @@ section h2 {
       document.querySelector('#music-controls button').innerText = music.muted ? 'Unmute Music' : 'Mute Music';
     };
 
-    // Custom player controls
+    // Player controls
     const audio = document.getElementById('customAudio');
     const playBtn = document.querySelector('#playerControls button');
     const seekBar = document.getElementById('seekBar');
-    const muteBtn = document.querySelector('#playerControls button:nth-child(3)');
+    const nowPlaying = document.getElementById('nowPlayingTitle');
 
     window.togglePlay = () => {
       if (audio.paused) {
@@ -307,28 +314,33 @@ section h2 {
         playBtn.innerText = '► Play';
       }
     };
+
     window.updateSeek = () => {
       if (audio.duration) {
         seekBar.value = (audio.currentTime / audio.duration) * 100;
       }
     };
+
     window.setSeek = () => {
       if (audio.duration) {
         audio.currentTime = (seekBar.value / 100) * audio.duration;
       }
     };
+
     audio.addEventListener('timeupdate', () => {
       if (audio.duration) {
         seekBar.value = (audio.currentTime / audio.duration) * 100;
       }
     });
+
     window.toggleMute = () => {
       audio.muted = !audio.muted;
       document.querySelector('#playerControls button:nth-child(3)').innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
     };
 
-    // Set default song
+    // Default song
     document.getElementById('customAudio').src = 'path/to/your-song1.mp3';
+    nowPlaying.innerText = 'No song selected';
   });
 </script>
 
