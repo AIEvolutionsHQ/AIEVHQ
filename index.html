@@ -143,6 +143,12 @@ footer {
 .text-center {
   text-align: center;
 }
+
+/* Style for the music controls container */
+#music-controls {
+  text-align: center;
+  margin: 20px 0;
+}
 </style>
 </head>
 <body>
@@ -158,6 +164,16 @@ footer {
     </nav>
   </div>
 </header>
+
+<!-- Background music controls -->
+<div id="music-controls">
+  <button onclick="toggleMute()" style="padding:8px 12px; font-size:1rem;">Unmute Music</button>
+</div>
+<!-- Hidden background music that autoplays and loops -->
+<audio autoplay loop muted id="backgroundMusic" style="display:none;">
+  <source src="your-background-music.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
 
 <!-- Landing / Home Section -->
 <section id="home" class="active">
@@ -215,6 +231,31 @@ footer {
   </p>
 </section>
 
+<!-- Music Collection Section -->
+<h3 style="text-align:center; margin-top:40px;">Enjoy Our Music Collection</h3>
+<div style="display:flex; flex-direction:column; gap:15px; max-width:600px; margin:auto;">
+  <audio controls style="width:100%;">
+    <source src="path/to/your-song1.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <audio controls style="width:100%;">
+    <source src="path/to/your-song2.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <audio controls style="width:100%;">
+    <source src="path/to/your-song3.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <audio controls style="width:100%;">
+    <source src="path/to/your-song4.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <audio controls style="width:100%;">
+    <source src="path/to/your-song5.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
 <!-- Footer -->
 <footer>
   <p>&copy; 2026 AI Evolutions HQ | All rights reserved.</p>
@@ -224,13 +265,20 @@ footer {
 </footer>
 
 <script>
-  function showSection(sectionId) {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => {
-      sec.classList.remove('active');
-    });
-    document.getElementById(sectionId).classList.add('active');
-  }
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(sectionId).classList.add('active');
+}
+
+function toggleMute() {
+  const music = document.getElementById('backgroundMusic');
+  music.muted = !music.muted;
+  const btn = document.querySelector('#music-controls button');
+  btn.innerText = music.muted ? 'Unmute Music' : 'Mute Music';
+}
 </script>
 
 </body>
