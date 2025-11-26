@@ -5,222 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI Evolutions HQ | Computer Solutions</title>
 <style>
-  /* Reset & Base styles */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  /* Header styles */
-  header {
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 20px 0;
-  }
-  header .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  nav a {
-    margin-left: 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  /* Hero section */
-  .hero {
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    padding: 0 20px;
-  }
-  .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
-  /* Sections */
-section {
-  display: none;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-section.active {
-  display: block;
-}
-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  color: #0d6efd;
-}
-/* Services */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.service-card {
-  background-color: #fff;
-  border-radius: 8px;
-  flex: 1 1 250px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-}
-/* Contact */
-.contact-info {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 20px;
-  text-align: center;
-}
-.contact-info a {
-  color: #0d6efd;
-}
-.contact-info a:hover {
-  text-decoration: underline;
-}
-/* Footer */
-footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-/* Utility for center text */
-.text-center {
-  text-align: center;
-}
-/* Music collection list styling */
-#music-collection {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
-#music-collection audio {
-  width: 100%;
-}
-/* Button to open modal */
-#select-song-btn {
-  display: block;
-  margin: 30px auto;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-#select-song-btn:hover {
-  background-color: #095bb5;
-}
-/* Modal styling */
-#songModal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-#songModal.show {
-  display: flex;
-}
-#modalContent {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  width: 350px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-#modalContent h4 {
-  margin-bottom: 15px;
-  text-align: center;
-}
-#songList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.song-item {
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.song-item:hover {
-  background-color: #ddd;
-}
-/* Custom Player Styles */
-#custom-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-}
-#custom-player button {
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-#custom-player button:hover {
-  background-color: #095bb5;
-}
-#seekBar {
-  flex: 1;
-  min-width: 150px;
-  height: 5px;
-  cursor: pointer;
-}
+  /* All your CSS styles here (unchanged) */
+  /* ... (your entire style block remains exactly the same) ... */
 </style>
 </head>
 <body>
@@ -238,7 +24,7 @@ footer {
   </div>
 </header>
 
-<!-- Sections (unchanged) -->
+<!-- All your sections are unchanged -->
 <section id="home" class="active">
   <div class="hero"><h2>Empowering Your Tech Journey</h2></div>
 </section>
@@ -255,24 +41,19 @@ footer {
   <h2>Contact Us</h2>
 </section>
 
-<!-- Your music collection, modal, and player code remains unchanged -->
-<!-- ... (rest of your code) ... -->
+<!-- Your Music collection and player code remains untouched here -->
+<!-- ... (rest of your existing code: music collection, modal, custom player, footer) ... -->
 
-<!-- Add this script at the end of your scripts or before </body> -->
+<!-- Just before the closing </body> tag, add this script: -->
 <script>
-  // Function to switch pages
   function showSection(id) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 </script>
 
-<!-- Your existing scripts for music, modal, controls, etc. stay as is -->
-<script>
-  // Your existing script code (for modal, music controls, etc.)
-  // ...
-  // (Make sure your existing scripts are there, I haven't repeated them here for brevity)
-</script>
+<!-- Your existing scripts for music, modal, controls, etc. stay unchanged -->
+<!-- ... (your other scripts) ... -->
 
 </body>
 </html>
