@@ -3,338 +3,118 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Evolutions HQ | Computer Solutions</title>
+<title>Single Song Player with Selection</title>
 <style>
-  /* Reset & Base styles */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  body { font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; }
+  #playerContainer {
+    background-color: red; border: 3px solid black; border-radius:10px; padding: 10px; max-width:600px; margin:auto;
+    display:flex; flex-direction:column; align-items:center;
   }
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+  #controls {
+    display:flex; gap:10px; margin-top:10px; align-items:center;
   }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  /* Header styles */
-  header {
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 20px 0;
-  }
-  header .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  nav a {
-    margin-left: 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  /* Hero section */
-  .hero {
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    padding: 0 20px;
-  }
-  .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
-
-  /* Sections */
-section {
-  display: none;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-section.active {
-  display: block;
-}
-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  color: #0d6efd;
-}
-
-/* Player container styles */
-#playerContainer {
-  background-color: red;
-  border: 3px solid #000;
-  padding: 15px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 30px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-#playerControls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-#playerControls button {
-  background-color: #fff;
-  color: #000;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  min-width: 80px;
-  transition: background 0.2s;
-}
-#playerControls button:hover {
-  background: #ddd;
-}
-#seekBar {
-  flex: 1;
-  min-width: 150px;
-  height: 5px;
-  cursor: pointer;
-}
-#nowPlayingTitle {
-  margin-top: 15px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #fff;
-}
-#select-song-btn {
-  display: block;
-  margin: 30px auto;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-#select-song-btn:hover {
-  background-color: #095bb5;
-}
-
-/* Modal styles */
-#songModal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-#songModal.show {
-  display: flex;
-}
-#modalContent {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  width: 350px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-#modalContent h4 {
-  margin-bottom: 15px;
-  text-align: center;
-}
-#songList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.song-item {
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.song-item:hover {
-  background-color: #ddd;
-}
+  button { padding:10px; border:none; border-radius:5px; cursor:pointer; }
+  #nowPlaying { margin-top:10px; font-weight:bold; color:#fff; }
+  #songList {margin-top:20px;}
+  .song { padding:10px; background:#fff; margin-bottom:5px; cursor:pointer; border-radius:5px; }
+  .song:hover { background:#eee; }
+  #modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; }
+  #modal.show { display:flex; }
+  #modalContent { background:#fff; padding:20px; border-radius:10px; max-width:80%; max-height:80%; overflow:auto; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>AI Evolutions HQ</h1>
-    <nav>
-      <a onclick="showSection('home')">Home</a>
-      <a onclick="showSection('about')">About Us</a>
-      <a onclick="showSection('services')">Our Services</a>
-      <a onclick="showSection('contact')">Contact Us</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Background music controls -->
-<div id="music-controls" style="text-align:center; margin:20px;">
-  <button onclick="toggleMute()" style="padding:8px 12px; font-size:1rem;">Unmute Music</button>
-</div>
-<!-- Hidden background music -->
-<audio autoplay loop muted id="backgroundMusic" style="display:none;">
-  <source src="Brian Smith - Walking on Air [original].mp3" type="audio/mpeg" />
-</audio>
-
-<!-- Main Sections -->
-<section id="home" class="active">
-  <div class="hero">
-    <h2>Empowering Your Tech Journey</h2>
-  </div>
-</section>
-<section id="about">
-  <h2>About Us</h2>
-  <div class="about-us">
-    <p>(Your about text here...)</p>
-  </div>
-</section>
-<section id="services">
-  <h2>Our Services</h2>
-</section>
-<section id="contact" class="contact-info">
-  <h2>Contact Us</h2>
-</section>
-
-<!-- Single Custom Player with border and red background -->
-<h3 style="text-align:center; margin-top:40px;">Your Music Player</h3>
+<h2 style="text-align:center;">My Single Song Player</h2>
 <div id="playerContainer">
-  <div id="playerControls">
-    <button onclick="togglePlay()">► Play</button>
-    <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
+  <div id="controls">
+    <button id="playBtn" onclick="togglePlay()">► Play</button>
+    <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" style="flex:1;"/>
     <button onclick="toggleMute()">🔊 Mute</button>
   </div>
-  <div id="nowPlayingTitle">No song selected</div>
+  <div id="nowPlaying">No song selected</div>
 </div>
 
-<!-- The hidden audio element for playing songs -->
-<audio id="customAudio" style="display:none;">
-  <source src="" type="audio/mpeg" />
-</audio>
-
-<!-- Button to open song list modal -->
 <div style="text-align:center; margin-top:20px;">
-  <button id="select-song-btn" onclick="openModal()">Select a Song</button>
+  <button onclick="openModal()">Select a Song</button>
 </div>
 
-<!-- Modal with song titles -->
-<div id="songModal">
+<!-- Hidden audio element -->
+<audio id="audio" src="" style="display:none;"></audio>
+
+<!-- Modal for song selection -->
+<div id="modal">
   <div id="modalContent">
-    <h4 style="text-align:center;">Choose a Song</h4>
-    <div id="songList" style="display:flex; flex-direction:column; gap:8px;">
-      <div class="song-item" onclick="playSelected('path/to/your-song1.mp3', 'Song Title 1')">Song Title 1</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song2.mp3', 'Song Title 2')">Song Title 2</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song3.mp3', 'Song Title 3')">Song Title 3</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song4.mp3', 'Song Title 4')">Song Title 4</div>
-      <div class="song-item" onclick="playSelected('path/to/your-song5.mp3', 'Song Title 5')">Song Title 5</div>
+    <h3>Select a Song</h3>
+    <div id="songList">
+      <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
+      <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
+      <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
     </div>
-    <div style="text-align:center; margin-top:15px;">
-      <button style="padding:8px 12px; background:#0d6efd; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
-    </div>
+    <button style="margin-top:10px; padding:8px; border:none; background:#333; color:#fff; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
   </div>
 </div>
 
-<!-- Scripts -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById("songModal");
-    window.openModal = () => modal.classList.add("show");
-    window.closeModal = () => modal.classList.remove("show");
+  const audio = document.getElementById('audio');
+  const playBtn = document.getElementById('playBtn');
+  const seekBar = document.getElementById('seekBar');
+  const nowPlaying = document.getElementById('nowPlaying');
 
-    // Play selected song, update title, and auto-start
-    window.playSelected = (path, title) => {
-      const audio = document.getElementById("customAudio");
-      const nowPlaying = document.getElementById("nowPlayingTitle");
-      audio.src = path;
-      nowPlaying.innerText = "Now Playing: " + title;
-      audio.play(); // Auto-play the selected song
-      document.querySelector('#playerControls button').innerText = '❚❚ Pause'; // Update button to Pause
-      closeModal();
-    };
+  function openModal() {
+    document.getElementById('modal').classList.add('show');
+  }
 
-    // Mute toggle for background music
-    window.toggleMute = () => {
-      const music = document.getElementById("backgroundMusic");
-      music.muted = !music.muted;
-      document.querySelector('#music-controls button').innerText = music.muted ? 'Unmute Music' : 'Mute Music';
-    };
+  function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+  }
 
-    // Player controls
-    const audio = document.getElementById('customAudio');
-    const playBtn = document.querySelector('#playerControls button');
-    const seekBar = document.getElementById('seekBar');
-    const nowPlaying = document.getElementById('nowPlayingTitle');
+  function playSelected(src, title) {
+    audio.src = src;
+    nowPlaying.innerText = 'Now Playing: ' + title;
+    audio.play(); // Auto-play
+    playBtn.innerText = '❚❚ Pause'; // Update button to pause
+    closeModal();
+  }
 
-    window.togglePlay = () => {
-      if (audio.paused) {
-        audio.play();
-        playBtn.innerText = '❚❚ Pause';
-      } else {
-        audio.pause();
-        playBtn.innerText = '► Play';
-      }
-    };
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playBtn.innerText = '❚❚ Pause';
+    } else {
+      audio.pause();
+      playBtn.innerText = '► Play';
+    }
+  }
 
-    window.updateSeek = () => {
-      if (audio.duration) {
-        seekBar.value = (audio.currentTime / audio.duration) * 100;
-      }
-    };
+  function updateSeek() {
+    if (audio.duration) {
+      seekBar.value = (audio.currentTime / audio.duration) * 100;
+    }
+  }
 
-    window.setSeek = () => {
-      if (audio.duration) {
-        audio.currentTime = (seekBar.value / 100) * audio.duration;
-      }
-    };
+  function setSeek() {
+    if (audio.duration) {
+      audio.currentTime = (seekBar.value / 100) * audio.duration;
+    }
+  }
 
-    audio.addEventListener('timeupdate', () => {
-      if (audio.duration) {
-        seekBar.value = (audio.currentTime / audio.duration) * 100;
-      }
-    });
+  function toggleMute() {
+    audio.muted = !audio.muted;
+  }
 
-    window.toggleMute = () => {
-      audio.muted = !audio.muted;
-      document.querySelector('#playerControls button:nth-child(3)').innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
-    };
-
-    // Set default song
-    document.getElementById('customAudio').src = 'path/to/your-song1.mp3';
-    document.getElementById('nowPlayingTitle').innerText = 'No song selected';
+  // Update seek bar as audio plays
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      seekBar.value = (audio.currentTime / audio.duration) * 100;
+    }
   });
+
+  // Set default song
+  window.onload = () => {
+    // Optional: set default song
+    // playSelected('your-song-path.mp3', 'Default Song');
+  };
 </script>
 
 </body>
