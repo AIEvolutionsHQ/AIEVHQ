@@ -21,6 +21,7 @@
     text-decoration: none;
     color: inherit;
   }
+
   /* Header styles */
   header {
     background-color: #0d6efd;
@@ -43,6 +44,7 @@
     font-weight: bold;
     cursor: pointer;
   }
+
   /* Hero section */
   .hero {
     background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
@@ -61,6 +63,7 @@
     padding: 10px 20px;
     border-radius: 8px;
   }
+
   /* Sections */
 section {
   display: none;
@@ -77,60 +80,54 @@ section h2 {
   font-size: 2rem;
   color: #0d6efd;
 }
-/* Services */
-.services {
+
+/* Style for the single custom player container */
+#playerContainer {
+  background-color: red;
+  border: 3px solid #000;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 30px auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+}
+
+/* Player controls inside container */
+#playerControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
   justify-content: center;
 }
-.service-card {
+
+/* Buttons styling */
+#playerControls button {
   background-color: #fff;
-  border-radius: 8px;
-  flex: 1 1 250px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  min-width: 80px;
+  transition: background 0.2s;
 }
-.service-card:hover {
-  transform: translateY(-5px);
+#playerControls button:hover {
+  background: #ddd;
 }
-/* Contact */
-.contact-info {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 20px;
-  text-align: center;
+/* Seek slider */
+#seekBar {
+  flex: 1;
+  min-width: 150px;
+  height: 5px;
+  cursor: pointer;
 }
-.contact-info a {
-  color: #0d6efd;
-}
-.contact-info a:hover {
-  text-decoration: underline;
-}
-/* Footer */
-footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-/* Utility for center text */
-.text-center {
-  text-align: center;
-}
-/* Music collection list styling */
-#music-collection {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
-#music-collection audio {
-  width: 100%;
-}
+
 /* Button to open modal */
 #select-song-btn {
   display: block;
@@ -147,6 +144,7 @@ footer {
 #select-song-btn:hover {
   background-color: #095bb5;
 }
+
 /* Modal styling */
 #songModal {
   display: none; /* Hidden by default */
@@ -188,40 +186,6 @@ footer {
 .song-item:hover {
   background-color: #ddd;
 }
-
-/* Custom Player Styles */
-#custom-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-}
-#custom-player button {
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-#custom-player button:hover {
-  background-color: #095bb5;
-}
-#seekBar {
-  flex: 1;
-  min-width: 150px;
-  height: 5px;
-  cursor: pointer;
-}
 </style>
 </head>
 <body>
@@ -242,7 +206,7 @@ footer {
 <div id="music-controls" style="text-align:center; margin:20px;">
   <button onclick="toggleMute()" style="padding:8px 12px; font-size:1rem;">Unmute Music</button>
 </div>
-<!-- Hidden background music that autoplays and loops -->
+<!-- Hidden background music -->
 <audio autoplay loop muted id="backgroundMusic" style="display:none;">
   <source src="Brian Smith - Walking on Air [original].mp3" type="audio/mpeg" />
 </audio>
@@ -258,81 +222,49 @@ footer {
   <div class="about-us">
     <p>
       <strong>Brian Rydell Smith</strong><br><br>
-      With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
-      With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you're looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
-      Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he's not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
+      (Your about text here...)
     </p>
   </div>
 </section>
 <section id="services">
   <h2>Our Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <h3>Custom Computer Builds</h3>
-      <p>From full builds to specialized setups, tailored to your needs and budget.</p>
-    </div>
-    <div class="service-card">
-      <h3>Installations & Support</h3>
-      <p>Quick, reliable setup and ongoing support to keep your systems running smoothly.</p>
-    </div>
-    <div class="service-card">
-      <h3>Training & Workshops</h3>
-      <p>Learn everything from basic computer skills to advanced tech topics with personalized training.</p>
-    </div>
-  </div>
+  <!-- Your services here -->
 </section>
 <section id="contact" class="contact-info">
   <h2>Contact Us</h2>
-  <p>
-    <strong>Brian Rydell Smith</strong><br>
-    9044 South Marshfield Avenue, Chicago, Illinois 60620<br>
-    Phone: (312) 287-6652<br>
-    Email: <a href="mailto:aievolutionshq@gmail.com">aievolutionshq@gmail.com</a><br><br>
-    <strong>Connect with me:</strong><br>
-    <a href="https://www.linkedin.com/in/brian-smith-3129ab3/" target="_blank">LinkedIn</a><br>
-    <a href="https://www.youtube.com/@AIEvolutionsHQ" target="_blank">YouTube</a><br>
-    <a href="https://www.facebook.com/profile.php?id=61558169215677" target="_blank">Facebook</a><br>
-    <a href="https://www.tiktok.com/@aievolutionshq?lang=en" target="_blank">TikTok</a><br>
-    <a href="https://www.instagram.com/aievolutionshq/" target="_blank">Instagram</a>
-  </p>
+  <!-- Your contact info here -->
 </section>
 
-<!-- Music collection list -->
-<h3 style="text-align:center; margin-top:40px;">Enjoy Our Music Collection</h3>
-<div id="music-collection" style="margin-bottom:40px;">
-  <audio controls>
-    <source src="Brian Smith - The Rain Still Falls.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="Brian Smith - Letting-Go.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="Brian Smith - Leave You Bleeding.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="This Is My Anthem.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="new_beginning.mp3" type="audio/mpeg" />
-  </audio>
+<!-- Single Custom Player with border and red background -->
+<h3 style="text-align:center; margin-top:40px;">Your Music Player</h3>
+<div id="playerContainer">
+  <div id="playerControls">
+    <button onclick="togglePlay()">► Play</button>
+    <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
+    <button onclick="toggleMute()">🔊 Mute</button>
+  </div>
 </div>
 
-<!-- Button to open song selection modal -->
-<button id="select-song-btn" onclick="openModal()">Select a Song</button>
+<!-- The hidden audio element for playing songs -->
+<audio id="customAudio" style="display:none;">
+  <source src="path/to/your-song1.mp3" type="audio/mpeg" />
+</audio>
 
-<!-- Modal for selecting songs -->
+<!-- Button to open song list modal -->
+<div style="text-align:center; margin-top:20px;">
+  <button id="select-song-btn" onclick="openModal()">Select a Song</button>
+</div>
+
+<!-- Modal with song titles -->
 <div id="songModal">
   <div id="modalContent">
     <h4 style="text-align:center;">Choose a Song</h4>
-    <div style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2); max-width:90%; margin:auto;">
-      <h5 style="margin-bottom:10px; text-align:center;">My Song List</h5>
-      <div id="songList" style="display:flex; flex-direction:column; gap:8px;">
-        <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">Song Title 1</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Song Title 2</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Song Title 3</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Song Title 4</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">Song Title 5</div>
-      </div>
+    <div id="songList" style="display:flex; flex-direction:column; gap:8px;">
+      <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">Song Title 1</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Song Title 2</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Song Title 3</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Song Title 4</div>
+      <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">Song Title 5</div>
     </div>
     <div style="text-align:center; margin-top:15px;">
       <button style="padding:8px 12px; background:#0d6efd; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
@@ -340,38 +272,20 @@ footer {
   </div>
 </div>
 
-<!-- Custom Player -->
-<h3 style="text-align:center; margin-top:40px;">Now Playing</h3>
-<div id="custom-player">
-  <button class="play-pause" onclick="togglePlay()">► Play</button>
-  <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
-  <button class="mute-unmute" onclick="toggleMute()">🔊 Mute</button>
-</div>
-<audio id="customAudio" style="display:none;">
-  <source src="path/to/your-song1.mp3" type="audio/mpeg" />
-</audio>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2026 AI Evolutions HQ | All rights reserved.</p>
-  <p><a href="#" style="color:#fff; text-decoration:underline;">Privacy Policy</a></p>
-</footer>
-
+<!-- Your scripts -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Modal control
     const modal = document.getElementById("songModal");
     window.openModal = () => modal.classList.add("show");
     window.closeModal = () => modal.classList.remove("show");
-    // Play selected song
     window.playSelected = (path) => {
       document.getElementById("customAudio").src = path;
-      document.querySelector('.play-pause').innerText = '❚❚ Pause';
+      document.querySelector('#playerControls button').innerText = '❚❚ Pause';
       document.getElementById("customAudio").play();
-      window.closeModal();
+      closeModal();
     };
 
-    // Background music mute toggle
+    // Mute toggle for background music
     window.toggleMute = () => {
       const music = document.getElementById("backgroundMusic");
       music.muted = !music.muted;
@@ -380,9 +294,9 @@ footer {
 
     // Custom player controls
     const audio = document.getElementById('customAudio');
-    const playBtn = document.querySelector('.play-pause');
+    const playBtn = document.querySelector('#playerControls button');
     const seekBar = document.getElementById('seekBar');
-    const muteBtn = document.querySelector('.mute-unmute');
+    const muteBtn = document.querySelector('#playerControls button:nth-child(3)');
 
     window.togglePlay = () => {
       if (audio.paused) {
@@ -410,7 +324,7 @@ footer {
     });
     window.toggleMute = () => {
       audio.muted = !audio.muted;
-      muteBtn.innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
+      document.querySelector('#playerControls button:nth-child(3)').innerText = audio.muted ? '🔈 Unmute' : '🔊 Mute';
     };
 
     // Set default song
