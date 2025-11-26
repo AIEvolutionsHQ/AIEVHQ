@@ -3,77 +3,152 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Single Song Player with Selection</title>
+<title>Single Music Player</title>
 <style>
-  body { font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+  }
+  /* Container for the player */
   #playerContainer {
-    background-color: red; border: 3px solid black; border-radius:10px; padding: 10px; max-width:600px; margin:auto;
-    display:flex; flex-direction:column; align-items:center;
+    background-color: red;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   #controls {
-    display:flex; gap:10px; margin-top:10px; align-items:center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
   }
-  button { padding:10px; border:none; border-radius:5px; cursor:pointer; }
-  #nowPlaying { margin-top:10px; font-weight:bold; color:#fff; }
-  #songList {margin-top:20px;}
-  .song { padding:10px; background:#fff; margin-bottom:5px; cursor:pointer; border-radius:5px; }
-  .song:hover { background:#eee; }
-  #modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; }
-  #modal.show { display:flex; }
-  #modalContent { background:#fff; padding:20px; border-radius:10px; max-width:80%; max-height:80%; overflow:auto; }
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #seekBar {
+    flex-grow: 1;
+  }
+  #nowPlaying {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #fff;
+  }
+  /* Button to open modal */
+#openModalBtn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  background-color: #0d6efd;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+#openModalBtn:hover {
+  background-color: #095bb5;
+}
+/* Modal styles */
+#songModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+#songModal.show {
+  display: flex;
+}
+#modalContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 80%;
+  overflow-y: auto;
+  width: 80%;
+  max-width: 400px;
+}
+#songList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.song {
+  padding: 10px;
+  background: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.song:hover {
+  background: #ddd;
+}
 </style>
 </head>
 <body>
 
-<h2 style="text-align:center;">My Single Song Player</h2>
+<h2 style="text-align:center;">My Single Music Player</h2>
 <div id="playerContainer">
   <div id="controls">
-    <button id="playBtn" onclick="togglePlay()">► Play</button>
-    <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" style="flex:1;"/>
+    <button id="playPauseBtn" onclick="togglePlay()">► Play</button>
+    <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0"/>
     <button onclick="toggleMute()">🔊 Mute</button>
   </div>
   <div id="nowPlaying">No song selected</div>
 </div>
 
-<div style="text-align:center; margin-top:20px;">
-  <button onclick="openModal()">Select a Song</button>
-</div>
+<!-- Button to open modal -->
+<button id="openModalBtn" onclick="openModal()">Select a Song</button>
 
 <!-- Hidden audio element -->
-<audio id="audio" src="" style="display:none;"></audio>
+<audio id="audio"></audio>
 
-<!-- Modal for song selection -->
-<div id="modal">
+<!-- Modal for song list -->
+<div id="songModal">
   <div id="modalContent">
-    <h3>Select a Song</h3>
+    <h3 style="text-align:center;">Choose a Song</h3>
     <div id="songList">
       <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
       <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
       <div class="song" onclick="playSelected('https://www.w3schools.com/html/horse.mp3', 'Horse')">Horse</div>
     </div>
-    <button style="margin-top:10px; padding:8px; border:none; background:#333; color:#fff; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
+    <button style="margin-top:10px; padding:8px; background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
   </div>
 </div>
 
 <script>
   const audio = document.getElementById('audio');
-  const playBtn = document.getElementById('playBtn');
+  const playBtn = document.getElementById('playPauseBtn');
   const seekBar = document.getElementById('seekBar');
   const nowPlaying = document.getElementById('nowPlaying');
 
   function openModal() {
-    document.getElementById('modal').classList.add('show');
+    document.getElementById('songModal').classList.add('show');
   }
 
   function closeModal() {
-    document.getElementById('modal').classList.remove('show');
+    document.getElementById('songModal').classList.remove('show');
   }
 
   function playSelected(src, title) {
+    // Set source and play
     audio.src = src;
     nowPlaying.innerText = 'Now Playing: ' + title;
-    audio.play(); // Auto-play
-    playBtn.innerText = '❚❚ Pause'; // Update button to pause
+    audio.play(); // auto-start
+    // Update play button
+    playBtn.innerText = '❚❚ Pause';
     closeModal();
   }
 
@@ -110,11 +185,8 @@
     }
   });
 
-  // Set default song
-  window.onload = () => {
-    // Optional: set default song
-    // playSelected('your-song-path.mp3', 'Default Song');
-  };
+  // Optional: set default song
+  // playSelected('your-song.mp3', 'Default Song');
 </script>
 
 </body>
