@@ -1,374 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Evolutions HQ | Computer Solutions</title>
-<style>
-  /* Reset & Base styles */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  /* Header styles */
-  header {
-    background-color: #0d6efd;
-    color: #fff;
-    padding: 20px 0;
-  }
-  header .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  nav a {
-    margin-left: 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  /* Hero section styles */
-  .hero {
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.4&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    padding: 0 20px;
-  }
-  .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
-  /* Sections */
-section {
-  display: none;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-section.active {
-  display: block;
-}
-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  color: #0d6efd;
-}
-/* Services styling */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.service-card {
-  background-color: #fff;
-  border-radius: 8px;
-  flex: 1 1 250px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-}
-/* Contact styling */
-.contact-info {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 20px;
-  text-align: center;
-}
-.contact-info a {
-  color: #0d6efd;
-}
-.contact-info a:hover {
-  text-decoration: underline;
-}
-/* Footer styling */
-footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-/* Utility for center text */
-.text-center {
-  text-align: center;
-}
-/* Music collection styles */
-#music-collection {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
-#music-collection audio {
-  width: 100%;
-}
-/* Button styles for song modal */
-#select-song-btn {
-  display: block;
-  margin: 30px auto;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#select-song-btn:hover {
-  background-color: #095bb5;
-}
-/* Modal styles */
-#songModal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-#songModal.show {
-  display: flex;
-}
-#modalContent {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  width: 350px;
-}
-#modalContent h4 {
-  margin-bottom: 15px;
-  text-align: center;
-}
-#songList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.song-item {
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.song-item:hover {
-  background-color: #ddd;
-}
-/* Custom Player Styles */
-#custom-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-}
-#custom-player button {
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-#custom-player button:hover {
-  background-color: #095bb5;
-}
-#seekBar {
-  flex: 1;
-  min-width: 150px;
-  height: 5px;
-  cursor: pointer;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Evolutions HQ - Empowering Your Tech Journey</title>
+  <style>
+    /* Basic Styling - let's keep it slightly edgy */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Styling for the modal */
+    #songModal {
+      background-color: #222;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+    }
+
+    #songList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #songList li {
+      margin-bottom: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #songList li:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
+  <div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; color: #333;">
+    <h2 style="text-align: center; margin-bottom: 20px;">AI Evolutions HQ - Empowering Your Tech Journey</h2>
 
-<header>
-  <div class="container">
-    <h1>AI Evolutions HQ</h1>
-    <nav>
-      <a onclick="showSection('home')">Home</a>
-      <a onclick="showSection('about')">About Us</a>
-      <a onclick="showSection('services')">Our Services</a>
-      <a onclick="showSection('contact')">Contact Us</a>
-    </nav>
-  </div>
-</header>
+    <section id="home" class="active">
+      <div style="background-color: #f4f4f4; color: #333;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Empowering Your Tech Journey</h2>
+      </div>
+    </section>
 
-<!-- Sections (your original content unchanged) -->
-<section id="home" class="active">
-  <div class="hero"><h2>Empowering Your Tech Journey</h2></div>
-</section>
-<section id="about">
-  <h2>About Us</h2>
-  <div class="about-us">
-    <p>
-      <strong>Brian Rydell Smith</strong><br><br>
-      With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
-      With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you're looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
-      Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he's not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
-    </p>
-  </div>
-</section>
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <h3>Custom Computer Builds</h3>
-      <p>From full builds to specialized setups, tailored to your needs and budget.</p>
+    <section id="about">
+      <h2 style="text-align: center; margin-bottom: 20px;">About Us</h2>
+      <div style="background-color: #f4f4f4; color: #333;">
+        <p>
+          <strong style="font-style: italic;">Brian Rydell Smith</strong><br><br>
+          With a passion for technology and innovation, Brian Rydell Smith is a seasoned computer specialist dedicated to empowering individuals and businesses through tailored IT solutions. Based in Chicago, Illinois, Brian specializes in custom computer builds, installations, support, and comprehensive training—ranging from beginner basics to advanced topics.<br><br>
+          With years of hands-on experience, Brian has built a reputation for delivering reliable, cutting-edge services that help clients optimize their systems and stay ahead in today’s fast-paced digital world. Whether you’re looking for a full system overhaul, ongoing support, or expert training, Brian’s personalized approach ensures your technology works seamlessly for your needs.<br><br>
+          Driven by a commitment to excellence and continuous learning, Brian is passionate about sharing his knowledge and helping others harness the power of modern computing. When he’s not working on the latest tech projects, you can find him engaging with the community through his YouTube channel, social media, and professional networking.
+        </p>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 style="text-align: center; margin-bottom: 20px;">Our Services</h2>
+      <div style="background-color: #f4f4f4; color: #333;">
+        <div class="service-card">
+          <h3 style="text-align: center;">Custom Computer Builds</h3>
+          <p style="text-align: center;">From full builds to specialized setups, tailored to your needs and budget.</p>
+        </div>
+        <div class="service-card">
+          <h3 style="text-align: center;">Installations & Support</h3>
+          <p style="text-align: center;">Quick, reliable setup and ongoing support to keep your systems running smoothly.</p>
+        </div>
+        <div class="service-card">
+          <h3 style="text-align: center;">Training & Workshops</h3>
+          <p style="text-align: center;">Learn everything from basic computer skills to advanced tech topics with personalized training.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-info">
+      <h2 style="text-align: center; margin-bottom: 20px;">Contact Us</h2>
+      <div style="background-color: #f4f4f4; color: #333;">
+        <p>
+          <strong style="font-style: italic;">Brian Rydell Smith</strong><br><br>
+          9044 South Marshfield Avenue, Chicago, Illinois 60620<br>
+          Phone: (312) 287-6652<br>
+          Email: <a href="mailto:aievolutionshq@gmail.com" style="color: #007bff;">aievolutionshq@gmail.com</a><br><br>
+          <strong style="font-style: italic;">Connect with me:</strong><br>
+          <a href="https://www.linkedin.com/in/brian-smith-3129ab3/" target="_blank" style="color: #007bff;">LinkedIn</a><br>
+          <a href="https://www.youtube.com/@AIEvolutionsHQ" target="_blank" style="color: #007bff;">YouTube</a><br>
+          <a href="https://www.facebook.com/profile.php?id=61558169215677" target="_blank" style="color: #007bff;">Facebook</a><br>
+          <a href="https://www.tiktok.com/@aievolutionshq?lang=en" target="_blank" style="color: #007bff;">TikTok</a><br>
+          <a href="https://www.instagram.com/aievolutionshq/" target="_blank" style="color: #007bff;">Instagram</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Your music collection list -->
+    <h3 style="text-align: center; margin-top: 40px;">Enjoy Our Music Collection</h3>
+    <div id="music-collection" style="margin-bottom: 40px;">
+      <audio controls>
+        <source src="path/to/your-song1.mp3" type="audio/mpeg" />
+      </audio>
+      <audio controls>
+        <source src="path/to/your-song2.mp3" type="audio/mpeg" />
+      </audio>
+      <audio controls>
+        <source src="path/to/your-song3.mp3" type="audio/mpeg" />
+      </audio>
+      <audio controls>
+        <source src="path/to/your-song4.mp3" type="audio/mpeg" />
+      </audio>
+      <audio controls>
+        <source src="path/to/your-song5.mp3" type="audio/mpeg" />
+      </audio>
     </div>
-    <div class="service-card">
-      <h3>Installations & Support</h3>
-      <p>Quick, reliable setup and ongoing support to keep your systems running smoothly.</p>
-    </div>
-    <div class="service-card">
-      <h3>Training & Workshops</h3>
-      <p>Learn everything from basic computer skills to advanced tech topics with personalized training.</p>
-    </div>
-  </div>
-</section>
-<section id="contact" class="contact-info">
-  <h2>Contact Us</h2>
-  <p>
-    <strong>Brian Rydell Smith</strong><br>
-    9044 South Marshfield Avenue, Chicago, Illinois 60620<br>
-    Phone: (312) 287-6652<br>
-    Email: <a href="mailto:aievolutionshq@gmail.com">aievolutionshq@gmail.com</a><br><br>
-    <strong>Connect with me:</strong><br>
-    <a href="https://www.linkedin.com/in/brian-smith-3129ab3/" target="_blank">LinkedIn</a><br>
-    <a href="https://www.youtube.com/@AIEvolutionsHQ" target="_blank">YouTube</a><br>
-    <a href="https://www.facebook.com/profile.php?id=61558169215677" target="_blank">Facebook</a><br>
-    <a href="https://www.tiktok.com/@aievolutionshq?lang=en" target="_blank">TikTok</a><br>
-    <a href="https://www.instagram.com/aievolutionshq/" target="_blank">Instagram</a>
-  </p>
-</section>
 
-<!-- Your music collection list -->
-<h3 style="text-align:center; margin-top:40px;">Enjoy Our Music Collection</h3>
-<div id="music-collection" style="margin-bottom:40px;">
-  <audio controls>
-    <source src="Brian Smith - The Rain Still Falls.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="Brian Smith - Letting-Go.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="Brian Smith - Leave You Bleeding.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="This Is My Anthem.mp3" type="audio/mpeg" />
-  </audio>
-  <audio controls>
-    <source src="new_beginning.mp3" type="audio/mpeg" />
-  </audio>
-</div>
+    <!-- Button to open song modal -->
+    <button id="select-song-btn" onclick="openModal()">Select a Song</button>
 
-<!-- Button to open song modal -->
-<button id="select-song-btn" onclick="openModal()">Select a Song</button>
-
-<!-- Song modal -->
-<div id="songModal">
-  <div id="modalContent">
-    <h4 style="text-align:center;">Choose a Song</h4>
-    <div style="background:#fff; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2); max-width:90%; margin:auto;">
-      <h5 style="margin-bottom:10px; text-align:center;">My Song List</h5>
-      <div id="songList" style="display:flex; flex-direction:column; gap:8px;">
-        <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">The Rain Still Falls</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Letting Go</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Leave you Bleeding</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Anthem</div>
-        <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">New Begininning</div>
+    <!-- Song modal -->
+    <div id="songModal">
+      <div id="modalContent">
+        <h4 style="text-align: center;">Choose a Song</h4>
+        <div id="songList" style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="song-item" onclick="playSelected('path/to/your-song1.mp3')">The Rain Still Falls</div>
+          <div class="song-item" onclick="playSelected('path/to/your-song2.mp3')">Letting Go</div>
+          <div class="song-item" onclick="playSelected('path/to/your-song3.mp3')">Leave You Bleeding</div>
+          <div class="song-item" onclick="playSelected('path/to/your-song4.mp3')">Anthem</div>
+          <div class="song-item" onclick="playSelected('path/to/your-song5.mp3')">New Beginning</div>
+        </div> मंत्रिम
+        <button onclick="closeModal()">Close</button>
       </div>
     </div>
-    <div style="text-align:center; margin-top:15px;">
-      <button style="padding:8px 12px; background:#0d6efd; color:#fff; border:none; border-radius:5px; cursor:pointer;" onclick="closeModal()">Close</button>
-    </div>
+
+    <!-- Media queries for responsiveness - placeholders -->
   </div>
-</div>
-
-<!-- Your existing audio player -->
-<h3 style="text-align:center; margin-top:40px;">Now Playing</h3>
-<div id="custom-player">
-  <button class="play-pause" onclick="togglePlay()">► Play</button>
-  <input type="range" id="seekBar" onchange="setSeek()" oninput="updateSeek()" min="0" max="100" value="0" />
-  <button class="mute-unmute" onclick="toggleMute()">🔊 Mute</button>
-</div>
-<audio id="customAudio" style="display:none;">
-  <source src="path/to/your-song1.mp3" type="audio/mpeg" />
-</audio>
-
-<!-- ADDITION: Side-by-side videos next to your audio player -->
-<div style="display:flex; justify-content:center; align-items:center; gap:20px; margin-top:20px;">
-  <!-- Video on the left -->
-  <video width="300" height="200" controls style="background:#000;">
-    <!-- Path to your video -->
-    <source src="" type="kelly.mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Your existing audio player (as above, unchanged) -->
-  <!-- Already included above, but kept here to clarify placement -->
-
-  <!-- Video on the right -->
-  <video width="300" height="200" controls style="background:#000;">
-    <!-- Path to your video -->
-    <source src="" type="kelly.mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2026 AI Evolutions HQ | All rights reserved.</p>
-  <p><a href="#" style="color:#fff; text-decoration:underline;">Privacy Policy</a></p>
-</footer>
-
-<!-- Scripts (your existing scripts for modal, music, etc.) -->
-<script>
-  function showSection(id) {
-    document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-  // Keep your other scripts unchanged...
-</script>
-
 </body>
 </html>
