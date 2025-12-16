@@ -1,317 +1,722 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Evolutions HQ - Create Stunning AI Content</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    /* Reset and base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-color: #2563eb;
-      --secondary-color: #43a0e0;
-      --accent-color: #f8f9fa;
-      --text-color: #333;
-      --light-bg: #f8f9fa;
-      --dark-bg: #222;
-      --card-bg: #ffffff;
-    }
-
-    body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    /* Header Styles */
-    header {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Hero Section */
- .hero {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 50px;
-      border: 2px solid white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      color: white;
-    }
-
-    .btn-primary {
-      background-color: var(--primary-color);
-      border: none;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-    .btn-secondary {
-      background-color: transparent;
-      border: 2px solid white;
-    }
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-
-    /* Sections */
-section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.about, .services, .contact {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 2rem;
-}
-
-/* About Section */
-.about p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
-
-/* Services Section */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.service-card {
-  background-color: var(--card-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  flex: 1 1 300px;
-  max-width: 350px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.service-card h3 {
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.service-card p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Contact Section */
-.contact-info {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.social-icon {
-  background-color: var(--primary-color);
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Footer */
-footer {
-  background-color: var(--dark-bg);
-  color: #ccc;
-  padding: 2rem 2rem;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media(max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Evolutions HQ | AI Images & Videos</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            color: #333;
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: var(--dark);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2a75f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #702ecc;
+            box-shadow: 0 10px 20px rgba(131, 56, 236, 0.2);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .contact-icon i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content, .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image, .about-text, .about-image {
+                width: 100%;
+            }
+            
+            .hero-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            
+            .hero-image {
+                margin-top: 40px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">AI <span>Evolutions</span> HQ</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Header -->
-<header>
-  <div class="logo">AI Evolutions HQ</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate">
+                    <h1>Transform Your Ideas with AI</h1>
+                    <p>AI Evolutions HQ creates stunning AI-generated images and videos for businesses, marketers, 
+creators, and visionaries. Let's bring your imagination to life.</p>
+                    <a href="#contact" class="btn">Get Started</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
+                <div class="hero-image animate">
+                    <img 
+src="https://images.unsplash.com/photo-1633356122102-3fe601e76d2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+alt="AI Generated Content">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-  <h1>Create Stunning AI Content</h1>
-  <p>Specialized in AI-generated images and videos for consumers and professionals. Elevate your creativity today!</p>
-  <div class="cta-buttons">
-    <a href="#services" class="btn btn-primary">Our Services</a>
-    <a href="#contact" class="btn btn-secondary">Contact Us</a>
-  </div>
-</section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>AI Image Generation</h3>
+                    <p>Create stunning visuals from simple text prompts. Perfect for marketing materials, social 
+media, and creative projects.</p>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>AI Video Creation</h3>
+                    <p>Bring your ideas to life with our AI video generation services. Create animated explainer 
+videos, marketing clips, and more.</p>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored AI solutions designed specifically for your business needs. From product 
+visualizations to animated content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- About Section -->
-<section id="about" class="about">
-  <h2>About AI Evolutions HQ</h2>
-  <p>AI Evolutions HQ is the leading provider of AI-powered image and video creation for consumers and professionals. Owned and operated by Brian Smith, our mission is to empower your creative projects with cutting-edge AI technology.</p>
-  <p>Located in Chicago, Illinois, we serve clients worldwide with innovative AI content solutions tailored to your needs.</p>
-</section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate">
+                    <h2>About AI Evolutions HQ</h2>
+                    <p>Founded by AI enthusiasts and creative minds, we blend cutting-edge technology with artistic 
+vision to deliver unique AI-generated content.</p>
+                    <p>Our team combines expertise in artificial intelligence, graphic design, and digital marketing 
+to create content that not only looks stunning but also achieves your business goals.</p>
+                    <p>We're passionate about pushing the boundaries of what's possible with AI and helping our 
+clients succeed in the digital landscape.</p>
+                </div>
+                <div class="about-image animate">
+                    <img 
+src="https://images.unsplash.com/photo-1633356122102-3fe601e76d2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+alt="Team">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Services Section -->
-<section id="services" class="services">
-  <h2>Our Services</h2>
-  <div class="service-card">
-    <h3>AI Image Creation</h3>
-    <p>Create stunning, high-quality AI-generated images tailored to your specifications, perfect for marketing, branding, or personal projects.</p>
-  </div>
-  <div class="service-card">
-    <h3>AI Video Production</h3>
-    <p>Produce engaging AI-driven videos for professional use, social media, or personal content. Fast, creative, and customizable.</p>
-  </div>
-</section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@ai-evolutions.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-link"><i class="fab 
+fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-link"><i class="fab 
+fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-link"><i class="fab 
+fa-instagram"></i></a>
+                        <a href="https://twitter.com/" target="_blank" class="social-link"><i class="fab 
+fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate">
+                    <form id="contactForm">
+                        <div class="contact-item">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="contact-item">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="contact-item">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-info">
-    <p><strong>Owner & CEO:</strong> Brian Smith</p>
-    <p><strong>Phone:</strong> 312-287-6652</p>
-    <p><strong>Address:</strong> Chicago, Illinois</p>
-    <p><strong>Email:</strong> <a href="mailto:aievolutionshq@gmail.com" style="color:var(--primary-color); text-decoration:none;">aievolutionshq@gmail.com</a></p>
-  </div>
-  <h3>Follow us on Social Media</h3>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/brian-smith-3129ab3/" class="social-icon" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61558169215677" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/aievolutionshq/" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://x.com/Brian6095160080" class="social-icon" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x"></i></a>
-    <a href="https://www.tiktok.com/@aievolutionshq" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">AI <span>Evolutions</span> HQ</div>
+                    <p>Transforming ideas into reality with the power of artificial intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">AI Image Generation</a></li>
+                        <li><a href="#services">AI Video Creation</a></li>
+                        <li><a href="#services">Custom Solutions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2="contact">2023 AI Evolutions HQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<!-- Footer -->
-<footer>
-  <p>&copy; 2024 AI Evolutions HQ. All rights reserved.</p>
-</footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
 
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        function checkIfInView() {
+            animateElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect();
+                if (elementPosition.top < window.innerHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        // Initial check
+        checkIfInView();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkIfInView);
+    </script>
 </body>
 </html>
+```
