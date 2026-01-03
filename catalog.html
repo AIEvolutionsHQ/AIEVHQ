@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Content Catalog</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<h1>Content Catalog</h1>
+
+<div class="grid">
+  <!-- Example Video -->
+  <div class="item">
+    <h2>Sample Video 1</h2>
+    <video width="100%" controls>
+      <source src="your-video1.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+  <!-- Example Audio -->
+  <div class="item">
+    <h2>Sample Audio 1</h2>
+    <audio controls style="width: 100%;">
+      <source src="your-audio1.mp3" type="audio/mpeg" />
+      Your browser does not support audio.
+    </audio>
+  </div>
+  <!-- Add more items as needed -->
+</div>
+</body>
+</html>
